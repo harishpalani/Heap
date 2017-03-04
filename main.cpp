@@ -11,7 +11,6 @@ using namespace std;
 
 // Function prototypes
 
-
 int main() {
     return 0;
 }
