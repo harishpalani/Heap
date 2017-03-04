@@ -40,18 +40,39 @@ void Heap::insert(int n) {
         for (int i = 0; i < size; i++) {
             nodes2[i] = nodes[i];
         }
-        fill(size, 2 * size, 0);
+        fill(nodes2 + size, nodes2 + (2 * size), 0);
         
         int *temp = nodes;
         nodes = nodes2;
         delete[] temp;
-        size *= 2;
+        size = 2 * size;
         insert(n);
     }
 }
 
 void Heap::print() {
+    int levels = log2(count + 1);
+    levels = ceil(levels);
     
+    int index = 0;
+    for (int currentLevel = 1; currentLevel <= levels; currentLevel++) {
+        for (int i = 0; i < pow(2, levels - currentLevel) - 1; i++){
+            cout << ' ';
+        }
+        
+        for (int n = 0; n < pow(2, currentLevel - 1); n++){
+            if (nodes[index] != 0){
+                cout << nodes[index++];
+            } else {
+                break;
+            }
+            
+            for (int i = 0; i < pow(2, levels - currentLevel + 1) - 1; i++){
+                cout << ' ';
+            }
+        }
+        cout << endl;
+    }
 }
 
 void Heap::recursiveUp(int n) {
