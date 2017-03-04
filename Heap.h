@@ -5,10 +5,13 @@
 
 class Heap {
     public:
+        Heap();
+        ~Heap();
         
-    
     private:
-        
+        int count;
+        int size;
+        int *nodes;
 }
 
 #endif
