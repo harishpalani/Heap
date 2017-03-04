@@ -19,20 +19,30 @@ int main() {
         char input;
         cout << "Choose an option: \n- 1 | Enter list manually \n- 2 | Load a file \n- q | Quit" << endl;
         cin >> input;
+        char numbers[128];
         
-        if (input = '1') {
-            char numbers[128];
+        if (input == '1') {
             cout << "Please enter your list:" << endl;
             cin.ignore();
             cin.getline(numbers, 128);
             fillHeap(heap, numbers);
-        }
-        
-        else if (input == '2') {
+        } else if (input == '2') {
+            char filename[64];
+            cout << "Please enter the filename: " >> endl;
+            cin >> filename;
             
+            ifstream stream(filename);
+            if (stream.is_open()) {
+                stream.getline(numbers, 128, 0);
+                stream.close();
+                fillHeap(heap, numbers);
+            } else {
+                cout << "Error: File not found" << endl;
+                continue;
+            }
         }
         
-        else if (input == '3') {
+        else if (input == 'q') {
             
         }
         
