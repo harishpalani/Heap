@@ -13,7 +13,7 @@ class Heap {
         int pop();
         bool isEmpty();
         void insert(int n);
-        void print();
+        void printTree();
         void recursiveUp(int i);
         void recursiveDown(int i);
         

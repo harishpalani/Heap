@@ -50,7 +50,7 @@ void Heap::insert(int n) {
     }
 }
 
-void Heap::print() {
+void Heap::printTree() {
     int levels = log2(count + 1);
     levels = ceil(levels);
     
