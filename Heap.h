@@ -11,11 +11,11 @@ class Heap {
         ~Heap();
         int peek();
         int pop();
-        bool isEmpty();
         void insert(int n);
         void printTree();
         void recursiveUp(int i);
         void recursiveDown(int i);
+        bool isEmpty();
         
     private:
         int count;

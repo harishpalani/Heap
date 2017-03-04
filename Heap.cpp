@@ -13,10 +13,6 @@ Heap::~Heap() {
     delete[] nodes;
 }
 
-bool Heap::isEmpty() {
-    return nodes[0] == 0;
-}
-
 int Heap::peek() {
     return nodes[0];
 }
@@ -30,6 +26,7 @@ int Heap::pop() {
     return top;
 }
 
+// Recursive heap insertion
 void Heap::insert(int n) {
     if (count < size) {
         nodes[count] = n;
@@ -50,6 +47,7 @@ void Heap::insert(int n) {
     }
 }
 
+// If called, print the tree
 void Heap::printTree() {
     int levels = log2(count + 1);
     levels = ceil(levels);
@@ -75,6 +73,7 @@ void Heap::printTree() {
     }
 }
 
+// Use recursion to sort upwards
 void Heap::recursiveUp(int n) {
     if (n <= 0) { return; }
     
@@ -91,6 +90,7 @@ void Heap::recursiveUp(int n) {
     }
 }
 
+// Use recursion to sort downwards
 void Heap::recursiveDown(int n) {
     if(nodes[n] < nodes[2*n + 1] || nodes[n] < nodes[2*n + 2]) {
         int max = 2*n + 2;
@@ -104,4 +104,8 @@ void Heap::recursiveDown(int n) {
         nodes[max] = temp;
         recursiveDown(max);
     }
+}
+
+bool Heap::isEmpty() {
+    return nodes[0] == 0;
 }
