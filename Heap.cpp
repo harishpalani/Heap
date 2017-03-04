@@ -1,6 +1,3 @@
-#include <iostream>
-#include <cstring>
-#include <cmath>
 #include "Heap.h"
 
 using namespace std;
@@ -34,7 +31,23 @@ int Heap::pop() {
 }
 
 void Heap::insert(int n) {
-    
+    if (count < size) {
+        nodes[count] = n;
+        recursiveUp(count);
+        count++;
+    } else {
+        int* nodes2 = new int[2 * size]; // Double the array size
+        for (int i = 0; i < size; i++) {
+            nodes2[i] = nodes[i];
+        }
+        fill(size, 2 * size, 0);
+        
+        int *temp = nodes;
+        nodes = nodes2;
+        delete[] temp;
+        size *= 2;
+        insert(n);
+    }
 }
 
 void Heap::print() {

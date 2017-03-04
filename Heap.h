@@ -2,6 +2,8 @@
 #define HEAP_H
 
 #include <iostream>
+#include <cstring>
+#include <cmath>
 
 class Heap {
     public:
